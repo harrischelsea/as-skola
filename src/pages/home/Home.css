@@ -1,0 +1,85 @@
+.bgr {
+    background: #f2f2f2;
+}
+.articles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.article {
+    width: 46%;
+    background: white;
+    box-sizing: border-box;
+    margin: 2%;
+    border: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@media only screen and (max-width: 900px) {
+    .article {
+       width: 100%;
+    }
+}
+.article > h1 {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0;
+    font-style: italic;
+    text-transform: uppercase;
+}
+.article > p {
+    font-size: 12px;
+    padding: 10px;
+    text-align: justify;
+    margin: 0;
+}
+.datetime {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid #d9d9db;
+    background: #ededef;
+    padding: 10px;
+}
+
+.slider-bgr {
+    background-color: white;
+    margin: 2%;
+    box-shadow: 5px 5px 10px #e8e8e8;
+    display: block;
+}
+.carousel-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+.carousel-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.carousel-title > h1 {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    width: 70%;
+}
+.carousel-title > p {
+    font-size: 16px;
+    text-align: center;
+    width: 70%;
+}
+@media only screen and (max-width: 900px) {
+    .carousel-title {
+        display: none
+    }
+}

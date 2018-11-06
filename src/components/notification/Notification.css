@@ -1,0 +1,26 @@
+.notification-bgr {
+    background: white;
+    margin-top: 2%;
+    padding: 10px;
+}
+.notification-bgr > h1 {
+    font-size: 20px;
+    text-align: center;
+    background: grey;
+    color: white;
+    padding: 10px;
+}
+.list-item {
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.list-item > h1 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+.list-item > p {
+    text-align: justify;
+}

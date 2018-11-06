@@ -1,0 +1,11 @@
+.menu-bgr {
+    background: white;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 5px;
+    box-shadow: 5px 5px 10px #e8e8e8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
