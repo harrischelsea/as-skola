@@ -7,6 +7,7 @@ import Menu from '../../components/menu/Menu';
 import Notification from '../../components/notification/Notification';
 import Slider from '../../components/slider/Slider';
 import Loading from '../../components/loading/Loading';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
     constructor(props) {
@@ -54,14 +55,6 @@ export default class Home extends Component {
           });
       }
 
-      handleselectedFile = event => {
-          console.log('eeeevvvvv', event.target.files[0]);
-        this.setState({
-          selectedFile: event.target.files[0],
-          loaded: 0,
-        })
-      }
-
     async componentDidMount() {
         const frb = await this.frbInit();
         const read = await this.readData();
@@ -81,9 +74,7 @@ export default class Home extends Component {
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <Notification obavjestenja={this.state.obavjestenja} />
 
-            <input type="file" name="" id="" onChange={this.handleselectedFile} />
-            <button onClick={this.handleUpload}>Upload</button>
-
+            <Link to="/cms">cms</Link>
           </Grid.Column>
           
           <Grid.Column mobile={16} tablet={8} computer={12}>
