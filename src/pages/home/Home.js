@@ -8,6 +8,8 @@ import Notification from '../../components/notification/Notification';
 import Slider from '../../components/slider/Slider';
 import Loading from '../../components/loading/Loading';
 import { Link } from 'react-router-dom';
+import moment from 'moment'
+moment.locale('bs');
 
 export default class Home extends Component {
     constructor(props) {

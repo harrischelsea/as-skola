@@ -5,6 +5,10 @@ export default class Cms extends Component {
 constructor(props) {
     super(props);
     this.state={
+        naslov: '',
+        tekst: '',
+        autor: '',
+        downloadURL: '',
         selectedFile: null
     }
 }
@@ -18,24 +22,49 @@ handleselectedFile = event => {
     })
 }
 
-handleUpload = () => {
+handleUpload = async () => {
     const { selectedFile } = this.state;
     const uploadTask = firebase.storage().ref('images/' + selectedFile.name).put(selectedFile);
-    uploadTask.then(function(snapshot) {
+    await uploadTask.then(function(snapshot) {
         console.log('snap', snapshot);
         console.log('Uploaded a blob or file!');
       });
 
-    firebase.storage().ref('images/' + selectedFile.name).getDownloadURL().then(function(downloadURL) {
+    await firebase.storage().ref('images/' + selectedFile.name).getDownloadURL().then((downloadURL) => {
         console.log('File available at', downloadURL);
+        this.setState({ downloadURL });
         });
+}
+
+insertData = () => {
+    const { naslov, tekst, autor, downloadURL } = this.state;
+    firebase.database().ref('clanci/' + '5').set({
+        naslov,
+        tekst,
+        vrijeme: String( new Date() ),
+        autor,
+        slika: downloadURL
+      });
 }
 
   render() {
     return (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <label>naslov</label>
+            <input
+             onChange={ (naslov) => this.setState({naslov: naslov.target.value})}
+             type="text" />
+            <label>tekst</label>
+            <textarea
+            onChange={ (tekst) => this.setState({tekst: tekst.target.value})}
+            ></textarea>
+            <label>autor</label>
+            <input 
+             onChange={ (autor) => this.setState({autor: autor.target.value})}
+             type="text" />
             <input type="file" name="" id="" onChange={this.handleselectedFile} />
             <button onClick={this.handleUpload}>Upload</button>
+            <button onClick={this.insertData}>Dodaj</button>
       </div>
     )
   }

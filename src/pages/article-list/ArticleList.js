@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Image } from 'semantic-ui-react';
+import moment from 'moment';
+import 'moment/locale/bs';
+moment.locale('bs');
 
 export default class ArticleList extends Component {
   render() {
@@ -14,7 +17,7 @@ export default class ArticleList extends Component {
                             <p>{el.tekst.substring(0, 250) + "..."}</p>
                             <div className="datetime">
                                 <font>{el.autor}</font>
-                                <font>{el.vrijeme}</font>
+                                <font>{moment(el.vrijeme).format('L')}</font>
                             </div>
                         </div>
                     )
