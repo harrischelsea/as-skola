@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
-import { Container, Image, Grid } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import './Home.css';
 import ArticleList from '../article-list/ArticleList';
-import Menu from '../../components/menu/Menu';
 import Notification from '../../components/notification/Notification';
 import Slider from '../../components/slider/Slider';
 import Loading from '../../components/loading/Loading';
@@ -41,9 +40,11 @@ export default class Home extends Component {
         console.log('read data');
         firebase.database().ref('clanci/').on('value', snapshot => {
           console.log('ovdje');
-          console.log(snapshot.val());
+          let arr = Object.values(snapshot.val()).map( key => key )
+          console.log('aaaarrrrr', arr);
+          let newArr = arr.sort( (a, b) => a.vrijeme > b.vrijeme )
           this.setState({
-            clanci: snapshot.val()
+            clanci: arr.reverse()
           });
         });
 
@@ -65,18 +66,18 @@ export default class Home extends Component {
   render() {
       if (this.state.loading) return <Loading />
     return (
-    <div className="bgr">
-    <Menu />
-
+      <div>
         <Container>
         <Slider clanci={this.state.clanci} />
+        </Container>
 
+        <Container>
         <Grid>
           <Grid.Row>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <Notification obavjestenja={this.state.obavjestenja} />
 
-            <Link to="/cms">cms</Link>
+            
           </Grid.Column>
           
           <Grid.Column mobile={16} tablet={8} computer={12}>

@@ -2,6 +2,7 @@
     background: white;
     margin-top: 2%;
     padding: 10px;
+    box-shadow: 5px 5px 10px #e8e8e8;
 }
 .notification-bgr > h1 {
     font-size: 20px;
@@ -23,4 +24,6 @@
 }
 .list-item > p {
     text-align: justify;
+    color: grey;
+    margin-top: 10px;
 }

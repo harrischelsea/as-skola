@@ -1,0 +1,39 @@
+.bg {
+    background-color: white;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.img {
+    width: 50%;
+}
+.info {
+    padding: 20px;
+    width: 40%;
+}
+@media only screen and (max-width: 900px) {
+    .title {
+        flex-direction: column;
+    }
+    .info {
+        width: 70%
+    }
+}
+h1 {
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+}
+h4 {
+    margin: 0;
+    padding: 0;
+    padding: 5px;
+}
+.paragraf {
+    text-align: justify;
+    padding: 20px;
+}

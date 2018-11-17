@@ -38,7 +38,12 @@ handleUpload = async () => {
 
 insertData = () => {
     const { naslov, tekst, autor, downloadURL } = this.state;
-    firebase.database().ref('clanci/' + '5').set({
+    let key = firebase.database().ref('clanci').push().key;
+
+    console.log('kkkkkkeeeeeeeyyyyy', key);
+
+    firebase.database().ref('clanci/' + key).set({
+        id: key,
         naslov,
         tekst,
         vrijeme: String( new Date() ),
