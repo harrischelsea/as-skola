@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
+import {Editor, EditorState, RichUtils} from 'draft-js';
+import 'draft-js/dist/Draft.css';
+import './Cms.css';
 
 export default class Cms extends Component {
 constructor(props) {
@@ -9,9 +12,19 @@ constructor(props) {
         tekst: '',
         autor: '',
         downloadURL: '',
-        selectedFile: null
+        selectedFile: null,
+
+        editorState: EditorState.createEmpty()
+        
     }
+    
 }
+
+onChange = (editorState) => this.setState({editorState});
+
+_onBoldClick = () => {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
+  }
 
 handleselectedFile = event => {
     console.log('eeeevvvvv', event.target.files[0]);
@@ -63,6 +76,13 @@ insertData = () => {
             <textarea
             onChange={ (tekst) => this.setState({tekst: tekst.target.value})}
             ></textarea>
+            
+            <button onClick={this._onBoldClick}>Bold</button>
+            <Editor
+                
+                editorState={this.state.editorState} 
+                onChange={this.onChange} />
+
             <label>autor</label>
             <input 
              onChange={ (autor) => this.setState({autor: autor.target.value})}
