@@ -12,7 +12,7 @@ export default class Notification extends Component {
                 this.props.obavjestenja && this.props.obavjestenja.map( (el, i) =>
                     <div key={i} className="list-item">
                         <h1>{el.naslov}</h1>
-                        <p>{el.tekst}</p>
+                        <p>{el.tekst && el.tekst}</p>
                     </div>
                 )
             }

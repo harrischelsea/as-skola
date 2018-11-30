@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
 import { Container, Image } from 'semantic-ui-react';
+import Gallery from 'react-photo-gallery';
 import './Article.css';
 import moment from 'moment'
 moment.locale('bs');
@@ -48,7 +49,7 @@ async componentDidMount() {
 }
 
   render() {
-    const { naslov, tekst, autor, vrijeme, slika } = this.state.article;
+    const { naslov, tekst, autor, vrijeme, slika, galerija } = this.state.article;
     return (
       <div className="bg">
         <Container>
@@ -64,8 +65,17 @@ async componentDidMount() {
               height: '60%'
               }} />
           </div>
-          
+
           <p className="paragraf">{tekst}</p>
+
+          <div className="gallery">
+            <h1>GALERIJA</h1>
+            {
+              galerija && galerija.map( el =>
+                <img src={el} style={{width: '25%', height: 'auto'}} />
+              )
+            }
+          </div>
 
         </Container> 
       </div>
