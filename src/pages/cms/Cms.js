@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as firebase from "firebase";
-import 'draft-js/dist/Draft.css';
+import { Container } from 'semantic-ui-react';
 import './Cms.css';
 
 export default class Cms extends Component {
@@ -70,36 +70,51 @@ insertData = () => {
 
   render() {
     return (
-      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-            <label>naslov</label>
-            <input
-             onChange={ (naslov) => this.setState({naslov: naslov.target.value})}
-             type="text" />
-            <label>tekst</label>
-            <textarea
-            onChange={ (tekst) => this.setState({tekst: tekst.target.value})}
-            ></textarea>
-            <label>autor</label>
-            <input 
-             onChange={ (autor) => this.setState({autor: autor.target.value})}
-             type="text" />
+    <Container>
+      <div className="cms-bgr">
+            <div className="cms-input">
+                <label>Naslov</label>
+                <input
+                    placeholder="Unesite naslov..."
+                    onChange={ (naslov) => this.setState({naslov: naslov.target.value})}
+                    type="text" />
+                <label>Tekst</label>
+                <textarea
+                    placeholder="Unesite tekst..."
+                    onChange={ (tekst) => this.setState({tekst: tekst.target.value})}
+                    ></textarea>
+                <label>Autor</label>
+                <input 
+                    placeholder="Unesite autora.."
+                    onChange={ (autor) => this.setState({autor: autor.target.value})}
+                    type="text" />
+            </div>
 
-            <input type="file" className="inputfile" id="f" onChange={this.handleselectedFile} />
-            <label for="f">Kliknite da dodate sliku</label>
-            
-            <button onClick={this.handleUpload}>Upload {this.state.loading ? "Sačekajte..." : ""}</button>
-            <button onClick={this.insertData}>Dodaj</button>
-
-            <h1>{this.state.imgs.length}</h1>
-
-            <div>
-                {
-                    this.state.imgs.map(el => 
-                        <img src={el} style={{width: '20%', height: 'auto'}} />
-                        )
-                }
+            <div className="add-images">
+                <div className="upload-img">
+                    <input 
+                        type="file" 
+                        className="inputfile" 
+                        id="f" 
+                        onChange={this.handleselectedFile} />
+                    <label for="f">Kliknite da dodate sliku</label>
+                    <h1 onClick={this.handleUpload}> + {this.state.loading ? " (Sačekajte...)" : ""}</h1>
+                </div>
+    
+                <h1>{this.state.imgs.length}</h1>
+                <div>
+                    {
+                        this.state.imgs.map(el => 
+                            <img src={el} style={{width: '20%', height: 'auto'}} />
+                            )
+                    }
+                </div>
             </div>
       </div>
+
+      <button className="add-article" onClick={this.insertData}>Dodaj</button>
+
+    </Container>
     )
   }
 }

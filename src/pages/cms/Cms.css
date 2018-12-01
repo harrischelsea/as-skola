@@ -1,3 +1,7 @@
+.cms-bgr {
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
 .inputfile {
 	width: 0.1px;
 	height: 0.1px;
@@ -5,4 +9,65 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+.cms-input {
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+    padding: 10pX;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    width: 45%;
+}
+.cms-input > label {
+    font-size: 20px;
+    padding: 10px;
+}
+.cms-input > input {
+    width: 70%;
+    padding: 10px;
+}
+.cms-input > textarea {
+    width: 70%;
+    height: 200px;
+    padding: 10px;
+}
+.add-images {
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+    padding: 10pX;
+    float: right;
+    width: 45%;
+    padding: 20px;
+}
+.upload-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.upload-img > h1 {
+    background-color: aqua;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+.add-images > button {
+    width: 100%;
+    padding: 10px;
+    align-self: flex-end;
+}
+.add-article {
+    width: 30%;
+    float: right;
+    margin: 10px;
+    background-color: aqua;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }

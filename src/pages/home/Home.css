@@ -20,6 +20,9 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.article:hover {
+    box-shadow: 5px 5px 30px #727272;
+}
 @media only screen and (max-width: 900px) {
     .article {
        width: 100%;
